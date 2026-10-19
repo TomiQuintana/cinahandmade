@@ -1,18 +1,26 @@
 const TEL = "5493512512525";
 const wa = (msg) => `https://wa.me/${TEL}?text=${encodeURIComponent(msg)}`;
 
+// Configurador de etiquetas
+const stockConfig = {
+  stock:    { label: "En stock",       class: "stock" },
+  limitado: { label: "Stock limitado", class: "limitado" },
+  encargo:  { label: "Por encargo",    class: "encargo" }
+};
+
+// Lista de piezas con sus estados asignados
 const piezas = [
-  {n:"Anillo Labra",       t:"anillo",    p:37000, f:["labra-1","labra-2","labra-3"]},
-  {n:"Collar Pliegue",     t:"collar",    p:35000, f:["pliegue-1","pliegue-2","pliegue-3","pliegue-4"]},
-  {n:"Collar Ágata",       t:"collar",    p:44000, f:["agata-1","agata-2"]},
-  {n:"Anillo Calcedonia",  t:"anillo",    p:40000, f:["calcedonia-1","calcedonia-2","calcedonia-3"]},
-  {n:"Collar Antonia",     t:"collar",    p:25000, f:["antonia-1"]},
-  {n:"Collar Hera",        t:"collar",    p:30000, f:["hera-collar-1","hera-collar-2"]},
-  {n:"Brazalete Hera",     t:"brazalete", p:28000, f:["hera-brazalete-1","hera-brazalete-2","hera-collar-2"]},
-  {n:"Aros Tina",          t:"aros",      p:25000, f:["tina-aros-1","tina-set"]},
-  {n:"Brazalete Tina",     t:"brazalete", p:30000, f:["tina-brazalete-1","tina-brazalete-2","tina-set","tina-brazalete-4"]},
-  {n:"Collar Luna",        t:"collar",    p:46000, f:["luna-1","luna-2","luna-3","luna-4"]},
-  {n:"Anillo Numa",        t:"anillo",    p:20000, f:["numa-1","numa-2"]},
+  {n:"Anillo Labra",       t:"anillo",    p:37000, stock:"limitado", f:["labra-1","labra-2","labra-3"]},
+  {n:"Collar Pliegue",     t:"collar",    p:35000, stock:"encargo",  f:["pliegue-1","pliegue-2","pliegue-3","pliegue-4"]},
+  {n:"Collar Ágata",       t:"collar",    p:44000, stock:"limitado", f:["agata-1","agata-2"]},
+  {n:"Anillo Calcedonia",  t:"anillo",    p:40000, stock:"limitado", f:["calcedonia-1","calcedonia-2","calcedonia-3"]},
+  {n:"Collar Antonia",     t:"collar",    p:25000, stock:"encargo",  f:["antonia-1"]},
+  {n:"Collar Hera",        t:"collar",    p:30000, stock:"encargo",  f:["hera-collar-1","hera-collar-2"]},
+  {n:"Brazalete Hera",     t:"brazalete", p:28000, stock:"encargo",  f:["hera-brazalete-1","hera-brazalete-2","hera-collar-2"]},
+  {n:"Aros Tina",          t:"aros",      p:25000, stock:"encargo",  f:["tina-aros-1","tina-set"]},
+  {n:"Brazalete Tina",     t:"brazalete", p:30000, stock:"encargo",  f:["tina-brazalete-1","tina-brazalete-2","tina-set","tina-brazalete-4"]},
+  {n:"Collar Luna",        t:"collar",    p:46000, stock:"encargo",  f:["luna-1","luna-2","luna-3","luna-4"]},
+  {n:"Anillo Numa",        t:"anillo",    p:20000, stock:"encargo",  f:["numa-1","numa-2"]},
 ];
 
 const fmt = (v) => "$" + v.toLocaleString("es-AR");
@@ -20,14 +28,16 @@ const waIcon = document.querySelector("#wa-pedido svg").outerHTML;
 const chev = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const grid = document.getElementById("grid");
 
-// Renderizar tarjetas de piezas
 piezas.forEach((x, i) => {
   const el = document.createElement("article");
   el.className = "pieza";
   el.dataset.t = x.t;
   const many = x.f.length > 1;
+  const badge = stockConfig[x.stock] || stockConfig.stock;
+
   el.innerHTML = `
     <div class="foto">
+      <span class="badge-stock ${badge.class}">${badge.label}</span>
       <div class="slides" tabindex="0" aria-label="Fotos de ${x.n}">
         ${x.f.map((s, k) => `<img src="img/${s}.webp" alt="${x.n}, foto ${k+1}" width="840" height="1050" loading="${i < 3 ? "eager" : "lazy"}">`).join("")}
       </div>
@@ -58,10 +68,8 @@ piezas.forEach((x, i) => {
   }
 });
 
-// Enlace de WhatsApp para pedidos
 document.getElementById("wa-pedido").href = wa("¡Hola Fran! Quiero consultar por una pieza a medida 💛");
 
-// Filtros por chips
 const chips = [...document.querySelectorAll(".chip")];
 chips.forEach(c => c.addEventListener("click", () => {
   chips.forEach(o => o.setAttribute("aria-pressed", String(o === c)));
@@ -69,7 +77,6 @@ chips.forEach(c => c.addEventListener("click", () => {
   document.querySelectorAll(".pieza").forEach(p => { p.hidden = !(f === "todo" || p.dataset.t === f); });
 }));
 
-// Enlace de WhatsApp en el footer
 const wf = document.getElementById("wa-footer");
 wf.href = wa("¡Hola Fran! 💛");
 wf.insertAdjacentHTML("afterbegin", waIcon);
