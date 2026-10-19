@@ -50,7 +50,7 @@ piezas.forEach((x, i) => {
       <h3><span class="tipo">${x.t}</span>${x.n}</h3>
       <span class="precio">${fmt(x.p)}</span>
     </div>
-    <a class="wa" href="${wa(`¡Hola Fran! ¿Tenés stock de ${x.n}? 💛`)}" target="_blank" rel="noopener">${waIcon}consultar stock</a>`;
+    <a class="wa" href="${wa(`¡Hola Fran! ¿Tenés stock de ${x.n}? 💛`)}" target="_blank" rel="noopener">${waIcon}consultar</a>`;
   grid.appendChild(el);
 
   if (many) {
