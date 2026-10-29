@@ -12,7 +12,7 @@ const stockConfig = {
 const piezas = [
   {n:"Anillo Labra",       t:"anillo",    p:37000, stock:"limitado", f:["labra-1","labra-2","labra-3"]},
   {n:"Collar Pliegue",     t:"collar",    p:35000, stock:"encargo",  f:["pliegue-1","pliegue-2","pliegue-3","pliegue-4"]},
-  {n:"Collar Ágata",       t:"collar",    p:44000, stock:"limitado", f:["agata-1","agata-2","agata-3"]},
+  {n:"Collar Ágata",       t:"collar",    p:44000, stock:"limitado", f:["agata-3","agata-1","agata-2"]},
   {n:"Anillo Calcedonia",  t:"anillo",    p:40000, stock:"limitado", f:["calcedonia-1","calcedonia-2","calcedonia-3"]},
   {n:"Collar Antonia",     t:"collar",    p:25000, stock:"encargo",  f:["antonia-1"]},
   {n:"Collar Hera",        t:"collar",    p:30000, stock:"encargo",  f:["hera-collar-1","hera-collar-2"]},
