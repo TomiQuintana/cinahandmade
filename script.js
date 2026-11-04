@@ -17,7 +17,7 @@ const piezas = [
   {n:"Collar Antonia",     t:"collar",    p:25000, stock:"encargo",  f:["antonia-1"]},
   {n:"Collar Hera",        t:"collar",    p:30000, stock:"encargo",  f:["hera-collar-1","hera-collar-2"]},
   {n:"Brazalete Hera",     t:"brazalete", p:28000, stock:"encargo",  f:["hera-brazalete-1","hera-brazalete-2","hera-collar-2"]},
-  {n:"Aros Hera",          t:"aros",      p:22000, stock:"limitado",  f:["hera-aros-1","hera-aros-2","hera-aros-3"]},
+  {n:"Aros Hera",          t:"aros",      p:22000, stock:"encargo",  f:["hera-aros-1","hera-aros-2","hera-aros-3"]},
   {n:"Aros Tina",          t:"aros",      p:25000, stock:"encargo",  f:["tina-aros-1","tina-set"]},
   {n:"Brazalete Tina",     t:"brazalete", p:30000, stock:"encargo",  f:["tina-brazalete-1","tina-brazalete-2","tina-set","tina-brazalete-4"]},
   {n:"Collar Luna",        t:"collar",    p:46000, stock:"encargo",  f:["luna-1","luna-2","luna-3","luna-4"]},
