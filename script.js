@@ -5,7 +5,8 @@ const wa = (msg) => `https://wa.me/${TEL}?text=${encodeURIComponent(msg)}`;
 const stockConfig = {
   stock:    { label: "En stock",       class: "stock" },
   limitado: { label: "Stock limitado", class: "limitado" },
-  encargo:  { label: "Por encargo",    class: "encargo" }
+  encargo:  { label: "Por encargo",    class: "encargo" },
+  sin_stock: { label: "Sin stock",       class: "sin-stock" }
 };
 
 // Lista de piezas con sus estados asignados
@@ -13,7 +14,7 @@ const piezas = [
   {n:"Anillo Labra",       t:"anillo",    p:37000, stock:"limitado", f:["labra-1","labra-2","labra-3"]},
   {n:"Collar Pliegue",     t:"collar",    p:35000, stock:"encargo",  f:["pliegue-1","pliegue-2","pliegue-3","pliegue-4"]},
   {n:"Collar Ágata",       t:"collar",    p:44000, stock:"limitado", f:["agata-3","agata-1","agata-2"]},
-  {n:"Anillo Calcedonia",  t:"anillo",    p:40000, stock:"encargo", f:["calcedonia-1","calcedonia-2","calcedonia-3"]},
+  {n:"Anillo Calcedonia",  t:"anillo",    p:40000, stock:"sin_stock", f:["calcedonia-1","calcedonia-2","calcedonia-3"]},
   {n:"Collar Antonia",     t:"collar",    p:25000, stock:"encargo",  f:["antonia-1"]},
   {n:"Collar Hera",        t:"collar",    p:30000, stock:"encargo",  f:["hera-collar-1","hera-collar-2"]},
   {n:"Brazalete Hera",     t:"brazalete", p:28000, stock:"encargo",  f:["hera-brazalete-1","hera-brazalete-2","hera-collar-2"]},
