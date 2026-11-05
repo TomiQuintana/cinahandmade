@@ -481,6 +481,15 @@ h2 {
   background: #805ad5;
 }
 
+/* Variante: Sin stock (Gris) */
+.badge-stock.sin-stock {
+  background: rgba(128, 128, 128, 0.9);
+  color: #ffffff;
+}
+.badge-stock.sin-stock::before {
+  background: #808080;
+}
+
 .info {
   display: flex;
   justify-content: space-between;
